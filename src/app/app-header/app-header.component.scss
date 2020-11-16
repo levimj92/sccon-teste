@@ -1,0 +1,27 @@
+@import 'src/variables';
+
+.nav-menu {
+  color: white;
+}
+
+mat-sidenav {
+  width: 200px;
+}
+
+mat-sidenav-container {
+}
+
+.content-wrapper {
+  max-height: inherit !important;
+}
+
+.active {
+  text-decoration: underline;
+  text-decoration-width: 2px;
+}
+
+//Para estilizar a toolbar com a cor correta da Sccon, que não está dentro do tema de cores padrão do material
+::ng-deep
+.mat-toolbar.mat-primary {
+  background: $sccon-primary;
+}

@@ -1,0 +1,10 @@
+@import '../../../variables';
+
+.search-button {
+  background-color: $sccon-secondary;
+  transition: background-color 300ms linear;
+
+  &:hover:not(:disabled) {
+    background-color: $sccon-hover;
+  }
+}

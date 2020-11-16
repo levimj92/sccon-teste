@@ -1,0 +1,12 @@
+@import '../../../variables';
+@import '~@angular/material/theming';
+
+
+.trash-button {
+  color: $sccon-secondary;
+  transition: color 300ms linear;
+
+  &:hover:not(:disabled) {
+    color: $sccon-hover;
+  }
+}

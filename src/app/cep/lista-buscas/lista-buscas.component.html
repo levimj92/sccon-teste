@@ -1,0 +1,42 @@
+<div class="p-8">
+  <h1>Busca de Endereços</h1>
+  <app-busca-cep></app-busca-cep>
+  <ng-container *ngIf="listaEndereco$ | async as listaEndereco">
+    <ng-container *ngIf="listaEndereco.length; else listaVazia">
+      <mat-table [@fade]="'in'" [dataSource]="listaEndereco" class="mat-elevation-z0">
+
+        <ng-container matColumnDef="cep">
+          <mat-header-cell *matHeaderCellDef> CEP</mat-header-cell>
+          <mat-cell *matCellDef="let endereco"> {{endereco.cep}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="endereco">
+          <mat-header-cell mat-header-cell *matHeaderCellDef> Endereco</mat-header-cell>
+          <mat-cell mat-cell *matCellDef="let endereco"> {{endereco.logradouro}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="data">
+          <mat-header-cell mat-header-cell *matHeaderCellDef> Data</mat-header-cell>
+          <mat-cell mat-cell *matCellDef="let endereco"> {{endereco.data | date : 'dd/MM/yyyy - hh:mm:ss'}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="action">
+          <mat-header-cell mat-header-cell *matHeaderCellDef></mat-header-cell>
+          <mat-cell mat-cell *matCellDef="let endereco">
+            <button mat-icon-button>
+              <mat-icon class="trash-button" (click)="removeEndereco(endereco)">delete</mat-icon>
+            </button>
+          </mat-cell>
+        </ng-container>
+
+        <mat-header-row mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row [@fade]="'in'" mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+      </mat-table>
+    </ng-container>
+  </ng-container>
+</div>
+<ng-template #listaVazia>
+  <div [@fade]="'in'" class="mt-2" [fxLayout]="'row'" [fxLayoutAlign]="'center center'">
+    <h2><i>Ainda não há pesquisas feitas. Digite um CEP para pesquisar.</i></h2>
+  </div>
+</ng-template>

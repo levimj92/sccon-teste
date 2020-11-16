@@ -1,0 +1,105 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import './variables';
+
+
+@for $i from 1 through (100 / $height-width-base) {
+  $calcValue: ($height-width-base * $i);
+
+  .h-#{$calcValue} {
+    height: percentage($calcValue / 100);
+  }
+
+  .w-#{$calcValue} {
+    width: percentage($calcValue / 100);
+  }
+
+  .min-h-#{$calcValue} {
+    min-height: percentage($calcValue / 100);
+  }
+
+  .min-w-#{$calcValue} {
+    min-width: percentage($calcValue / 100);
+  }
+
+  .max-h-#{$calcValue} {
+    max-height: percentage($calcValue / 100);
+  }
+
+  .max-w-#{$calcValue} {
+    max-width: percentage($calcValue / 100);
+  }
+}
+
+@for $i from 1 through $padding-margin-iteration {
+  $calcPaddingValue: ($base-padding * $i);
+  $calcMarginValue: ($base-margin * $i);
+
+  .p-#{$i} {
+    padding: $calcPaddingValue;
+  }
+
+  .pl-#{$i} {
+    padding-left: $calcPaddingValue;
+  }
+
+  .pr-#{$i} {
+    padding-right: $calcPaddingValue;
+  }
+
+  .pt-#{$i} {
+    padding-top: $calcPaddingValue;
+  }
+
+  .pb-#{$i} {
+    padding-bottom: $calcPaddingValue;
+  }
+
+  m-#{$i} {
+    margin: $calcMarginValue;
+  }
+
+  .ml-#{$i} {
+    margin-left: $calcMarginValue;
+  }
+
+  .mr-#{$i} {
+    margin-right: $calcMarginValue;
+  }
+
+  .mt-#{$i} {
+    margin-top: $calcMarginValue;
+  }
+
+  .mb-#{$i} {
+    margin-bottom: $calcMarginValue;
+  }
+}
+
+.w-auto {
+  width: auto;
+}
+
+.h-auto {
+  height: auto;
+}
+
+.m-auto {
+  margin: auto;
+}
+
+.ml-auto {
+  margin-left: auto;
+}
+
+.mr-auto {
+  margin-right: auto;
+}
+
+.mt-auto {
+  margin-top: auto;
+}
+
+.mb-auto {
+  margin-bottom: auto;
+}

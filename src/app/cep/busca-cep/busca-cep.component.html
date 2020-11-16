@@ -1,0 +1,10 @@
+<form [formGroup]="form" class="p-8" [fxLayout]="'row'" [fxLayoutAlign]="'center center'">
+  <mat-form-field class="w-35 mr-4" [appearance]="'standard'">
+    <mat-label>Busca por CEP</mat-label>
+    <input matInput type="text" [mask]="'00000-000'" [formControlName]="'cep'">
+    <mat-error *ngIf="form.controls.cep.errors?.mask">CEP inválido</mat-error>
+    <mat-error *ngIf="form.controls.cep.errors?.required">Campo obrigatório</mat-error>
+  </mat-form-field>
+  <button class="w-10 search-button" [disabled]="form.invalid || (loading$ | async)" mat-raised-button (click)="buscarCep(form.value)">Buscar</button>
+  <mat-spinner class="ml-2" *ngIf="loading$ | async" [diameter]="30" [color]="'primary'"></mat-spinner>
+</form>

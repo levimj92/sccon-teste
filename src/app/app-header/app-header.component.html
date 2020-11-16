@@ -1,0 +1,28 @@
+<mat-sidenav-container class="h-100">
+  <mat-sidenav #sidenav [mode]="'over'" [fxLayout]="'column'">
+    <ng-template [ngTemplateOutlet]="navMenu"></ng-template>
+  </mat-sidenav>
+  <mat-sidenav-content [fxLayout]="'column'" [fxFlexAlign]="'start stretch'">
+    <mat-toolbar [fxLayout]="'row'" [fxLayoutAlign]="'start center'" [color]="'primary'">
+      <button [fxHide.gt-xs]="true" mat-icon-button (click)="sidenav.toggle()">
+        <mat-icon color="primary">menu</mat-icon>
+      </button>
+      <img class="h-85 w-auto ml-4" src="../../assets/drawing.svg" alt="sscon icon">
+      <span class="ml-auto nav-menu" [fxHide.lt-sm]="true">
+        <ng-template [ngTemplateOutlet]="navMenu"></ng-template>
+      </span>
+    </mat-toolbar>
+    <div [fxFlex]="'1 1 1'" class="content-wrapper">
+      <ng-content></ng-content>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+<ng-template #navMenu>
+  <button  mat-button [routerLinkActive]="'active'" [routerLink]="['/home']">Home</button>
+  <button  mat-button [matMenuTriggerFor]="menu">Endereços</button>
+</ng-template>
+
+<mat-menu #menu="matMenu">
+  <button mat-menu-item [routerLinkActive]="'active'" [routerLink]="['/cep']">Buscar Endereços</button>
+</mat-menu>
